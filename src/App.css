@@ -80,10 +80,12 @@ form input {
 .section-left,
 .section-right {
   display: flex;
+  flex-grow: 1;
+  flex-basis: 50%;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  flex-basis: 50%;
+
 }
 
 article {
@@ -91,9 +93,11 @@ article {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  height: 250px;
-  width: 500px;
-  margin: 5px 0;
+  min-height: 250px;
+  max-height: 250px;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 5px 5px;
   border: 1px solid #ccc;
   border-radius: 1%;
 }
@@ -107,20 +111,25 @@ article {
 
 .repo-avatar {
   flex-basis: 30%;
-  max-width: 125px;
-  max-height: 125px;
+  max-width: 100px;
+  max-height: 100px;
   border-radius: 10%;
-  margin: 0 10px 0 10px;
+  margin: 5px 10px 0 10px;
 }
 
 .repo-container {
   display: flex;
+  flex-grow: 1;
   flex-wrap: wrap;
   flex-basis: 65%;
-  margin: 0 10px 0 0;
+  margin: 5px 10px 0 0;
 }
 
 .repo-description {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  flex-wrap: nowrap;
   flex-basis: 100%;
 }
 
@@ -135,7 +144,7 @@ article {
   background: #f6f8fa;
   border: none;
   border-radius: 5%;
-  margin: 0 10px;
+  margin: 5px 10px;
   padding: auto;
 }
 
@@ -161,4 +170,20 @@ article {
 .error-page {
   padding-top: 40vh;
   align-items: center;
+}
+
+@media (max-width: 800px) {
+  article {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 625px) {
+  .section-left {
+    order: 2;
+  }
+
+  .section-right {
+    order: 1;
+  }
 }
