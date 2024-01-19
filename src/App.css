@@ -131,7 +131,10 @@ article {
   flex-grow: 1;
   flex-wrap: nowrap;
   flex-basis: 100%;
+  max-height: 100px;
+  font-size: 14px
 }
+
 
 .repo-forks,
 .repo-stars {
@@ -175,6 +178,10 @@ article {
 @media (max-width: 800px) {
   article {
     max-height: 500px;
+  }
+
+  .repo-description {
+    max-height: 200px;
   }
 }
 
