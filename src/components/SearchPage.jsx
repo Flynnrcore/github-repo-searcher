@@ -8,18 +8,25 @@ class SearchPageComponents extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { text: props.text || '' };
+    this.state = { 
+      text: props.text || '',
+      isLoading: false,
+    };
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const value = this.state.text;
     const url = `https://api.github.com/search/repositories?q=${value}`;
+    this.setState({ isLoading: true });
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         const { setRepos } = this.context;
         setRepos(data.items);
+      })
+      .finally(() => {
+        this.setState({ isLoading: false })
       });
   }
 
@@ -34,6 +41,7 @@ class SearchPageComponents extends React.Component {
           <input
             onChange={this.handleChange}
             value={this.state.text}
+            disabled={this.state.isLoading}
             placeholder=" введите наименование репозитория..."
           />
         </form>
