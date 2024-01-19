@@ -14,6 +14,11 @@ class Repo extends React.Component {
     }
   }
 
+  handleDelFavorite = (repoId) => {
+    const { delFavoriteRepo } = this.context;
+    delFavoriteRepo(repoId);
+  }
+
   handleClick = (url) => {
     const { setRepoPage } = this.context;
     setRepoPage(url);
@@ -41,7 +46,11 @@ class Repo extends React.Component {
           <p className="repo-forks">Forks: {forks_count}</p>
           <p className="repo-stars">Stars: {stargazers_count}</p>
         </div>
-        { favorite ? null : (
+        { favorite ? (
+          <button onClick={() => this.handleDelFavorite(this.props.id)} className="repo-btn">
+            Удалить из избранного
+          </button> 
+        ) : (
           <button onClick={() => this.handleAddFavorite(this.props)} className="repo-btn">
             Добавить в избранное
           </button> 

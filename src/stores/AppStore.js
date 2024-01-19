@@ -18,6 +18,10 @@ class AppStore {
     this.favoriteRepos = [...this.favoriteRepos, repo];
   }
 
+  delFavoriteRepo = (repoId) => {
+    this.favoriteRepos = this.favoriteRepos.filter(({ id }) => +id !== +repoId);
+  }
+
   setRepoPage = (url) => {
     this.repoPage = url;
   }
