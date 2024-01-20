@@ -28,7 +28,7 @@ export default class RepoPage extends React.Component {
     const { repoData } = this.state;
     if(!repoPage) {
       return (
-        <main className="repo-page">
+        <main className="not-found">
           <h1>Репозиторий для просмотра не выбран</h1>
           <p>Пожалуйста вернитесь на главную страницу и выберите репозиторий</p>
           <button className="repo-btn"><Link to="/">Назад</Link></button>
@@ -37,7 +37,9 @@ export default class RepoPage extends React.Component {
     }
 
     if (!repoData.owner) {
-      return <main className="repo-page">Загрузка данных...</main>;
+      return <main className="not-found">
+        <div>Загрузка данных...</div>
+      </main>;
     }
   
     return (

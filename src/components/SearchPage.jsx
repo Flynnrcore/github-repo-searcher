@@ -12,6 +12,8 @@ class SearchPageComponents extends React.Component {
     this.state = { 
       text: props.text || '',
       isLoading: false,
+      hidden: false,
+      errors: null,
     };
     this.timerId = null;
     this.delay = 500;
@@ -19,26 +21,39 @@ class SearchPageComponents extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, errors: null });
     clearTimeout(this.timerId);
     this.timerId = setTimeout(() => {
       const value = this.state.text;
       const url = `https://api.github.com/search/repositories?q=${value}`;
       fetch(url)
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Ошибка загрузки данных. Попробуйте сделать запрос еще раз.')
+          }
+          return response.json();
+        })
         .then((data) => {
           const { setRepos } = this.context;
           setRepos(data.items);
         })
-        .catch((e) => console.log(e))
+        .catch((e) => {
+          this.setState({ errors: e.message });
+        })
         .finally(() => {
-          this.setState({ isLoading: false })
+          this.setState({ isLoading: false });
         });
     }, this.delay);
   }
 
   handleChange = (e) => {
-    this.setState({ text: e.target.value});
+    this.setState({ text: e.target.value, errors: null });
+  }
+
+  toggleList = () => {
+    this.setState((prevState) => ({
+      hidden: !prevState.hidden,
+    }))
   }
 
   render() {
@@ -55,6 +70,7 @@ class SearchPageComponents extends React.Component {
           </form>
           <CopyButton text={this.state.text} />
         </div>
+        {this.state.errors ? (<div className="warning"> К сожалению произошла ошибка: {this.state.errors}</div>) : null}
         <section className="section-left">
           <h1>Список репозиториев:</h1>
           {this.context.repos.map((repo) => (
@@ -66,13 +82,21 @@ class SearchPageComponents extends React.Component {
           )}
         </section>
         <section className="section-right">
-          <h1>Избранные репозитории:</h1>
-          {this.context.favoriteRepos.map((repo) => {
+          <div className="favorite-header">
+            <h1>Избранные репозитории:</h1>
+            <button
+              className="hide-btn"
+              onClick={this.toggleList}
+            >
+              &#711;
+            </button>
+          </div>
+          {!this.state.hidden && (this.context.favoriteRepos.map((repo) => {
             const newProps = { ...repo, favorite: true };
             return (
               <RepoItem key={repo.id} {...newProps}/>
             );
-          })}
+          }))}
         </section>
       </main>
 

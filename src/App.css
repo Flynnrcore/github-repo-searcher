@@ -96,6 +96,13 @@ form input {
 
 }
 
+.warning {
+  flex-basis: 100%;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 .section-left,
 .section-right {
   display: flex;
@@ -104,6 +111,22 @@ form input {
   flex-direction: column;
   text-align: center;
   align-items: center;
+}
+
+.favorite-header {
+  display: flex;
+  align-items: center;
+}
+
+.hide-btn {
+  display: none;
+  height: 25px;
+  width: 25px;
+  font-size: 250%;
+  padding: 0;
+  margin-left: 5px;
+  background: none;
+  border: none;
 }
 
 article {
@@ -121,9 +144,9 @@ article {
 }
 
 .repo-name {
-  display: flex;
   flex-basis: 100%;
   justify-content: center;
+  margin: 5px 0 0 0;
 
 }
 
@@ -132,7 +155,7 @@ article {
   max-width: 100px;
   max-height: 100px;
   border-radius: 10%;
-  margin: 5px 10px 0 10px;
+  margin: 0 10px;
 }
 
 .repo-container {
@@ -140,7 +163,7 @@ article {
   flex-grow: 1;
   flex-wrap: wrap;
   flex-basis: 65%;
-  margin: 5px 10px 0 0;
+  margin: 0 10px 0 0;
 }
 
 .repo-description {
@@ -152,13 +175,13 @@ article {
   max-height: 120px;
   overflow: hidden;
   font-size: 14px;
-  margin-bottom: 0;
+  margin: 0;
 }
-
 
 .repo-forks,
 .repo-stars {
   flex-basis: 50%;
+  margin: 5px 0 0 0;
 }
 
 .repo-btn {
@@ -205,7 +228,7 @@ button:active {
 
 .repo-page-wrapper {
   flex-grow: 1;
-  width: 60vw;
+  min-width: 60vw;
   border: 1px solid #ccc;
   border-radius: 1%;
 }
@@ -257,6 +280,17 @@ button:active {
   font-weight: bold;
 }
 
+.not-found {
+  display: flex;
+  width: 90vw;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
 @media (max-width: 800px) {
   article {
     max-height: 500px;
@@ -268,6 +302,10 @@ button:active {
 }
 
 @media (max-width: 625px) {
+  .hide-btn {
+    display: block;
+  }
+
   .section-left {
     order: 2;
   }
