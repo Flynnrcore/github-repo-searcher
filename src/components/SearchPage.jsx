@@ -12,22 +12,28 @@ class SearchPageComponents extends React.Component {
       text: props.text || '',
       isLoading: false,
     };
+    this.timerId = null;
+    this.delay = 500;
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const value = this.state.text;
-    const url = `https://api.github.com/search/repositories?q=${value}`;
     this.setState({ isLoading: true });
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const { setRepos } = this.context;
-        setRepos(data.items);
-      })
-      .finally(() => {
-        this.setState({ isLoading: false })
-      });
+    clearTimeout(this.timerId);
+    this.timerId = setTimeout(() => {
+      const value = this.state.text;
+      const url = `https://api.github.com/search/repositories?q=${value}`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          const { setRepos } = this.context;
+          setRepos(data.items);
+        })
+        .catch((e) => console.log(e))
+        .finally(() => {
+          this.setState({ isLoading: false })
+        });
+    }, this.delay);
   }
 
   handleChange = (e) => {
