@@ -85,7 +85,6 @@ form input {
   flex-direction: column;
   text-align: center;
   align-items: center;
-
 }
 
 article {
@@ -144,6 +143,7 @@ article {
 .repo-btn {
   height: 35px;
   width: 125px;
+  color: #0366d6;
   background: #f6f8fa;
   border: none;
   border-radius: 5%;
@@ -171,7 +171,6 @@ article {
 }
 
 .error-page {
-  padding-top: 40vh;
   align-items: center;
 }
 
