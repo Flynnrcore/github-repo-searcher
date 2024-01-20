@@ -66,15 +66,34 @@ main {
   padding: 0;
 }
 
-form {
+.main-form {
+  display: flex;
   flex-basis: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
   max-height: 50px;
   margin-top: 10px;
 }
 
 form input {
   min-height: 20px;
-  min-width: 250px;
+  min-width: 220px;
+}
+
+.form-btn {
+  min-height: 30px;
+  width: 125px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 0;
+  color: #0366d6;
+  background: #f6f8fa;
+  border: none;
+  border-radius: 5%;
+
 }
 
 .section-left,
@@ -151,12 +170,12 @@ article {
   padding: auto;
 }
 
-.repo-btn:hover {
+button:hover {
   cursor: pointer;
   filter: brightness(0.9);
 }
 
-.repo-btn:active {
+button:active {
   transform: scale(0.9);
 }
 

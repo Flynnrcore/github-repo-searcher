@@ -1,7 +1,8 @@
 import React from "react";
 import {observer} from 'mobx-react';
 import { AppContext } from "../stores/AppStore";
-import RepoItem from "./RepoItem.jsx"
+import RepoItem from "./RepoItem.jsx";
+import CopyButton from "./CopyButton.jsx";
 
 class SearchPageComponents extends React.Component {
   static contextType = AppContext;
@@ -43,14 +44,17 @@ class SearchPageComponents extends React.Component {
   render() {
     return (
       <main>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            value={this.state.text}
-            disabled={this.state.isLoading}
-            placeholder=" введите наименование репозитория..."
-          />
-        </form>
+        <div className="main-form">
+          <form onSubmit={this.handleSubmit}>
+            <input
+              onChange={this.handleChange}
+              value={this.state.text}
+              disabled={this.state.isLoading}
+              placeholder=" введите наименование репозитория..."
+            />
+          </form>
+          <CopyButton text={this.state.text} />
+        </div>
         <section className="section-left">
           <h1>Список репозиториев:</h1>
           {this.context.repos.map((repo) => (
