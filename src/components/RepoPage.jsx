@@ -51,7 +51,7 @@ export default class RepoPage extends React.Component {
           </div>
           <ul className="repo-information-list">
             <li>Автор: {repoData.owner.login}</li>
-            <li>Создан: {repoData.created_at} Последнее обновление: {repoData.updated_at}</li>
+            <li>Создан: {repoData.created_at}<br/>Последнее обновление: {repoData.updated_at}</li>
             <li>Язык программирования: {repoData.language ? repoData.language : 'Не указан' }</li>
             <li>
               Описание:<br/>{repoData.description}
