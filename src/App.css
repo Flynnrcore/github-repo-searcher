@@ -43,6 +43,7 @@ header {
   justify-content: center;
   align-items: center;
   height: 50px;
+  width: 100vw;
   text-align: center;
   font-weight: 600;
   color: purple;
@@ -80,11 +81,11 @@ form {
 
 form input {
   min-height: 20px;
-  min-width: 220px;
+  min-width: 230px;
 }
 
 .form-btn {
-  min-height: 30px;
+  height: 28px;
   width: 125px;
   margin-top: 10px;
   margin-left: 10px;
@@ -274,10 +275,6 @@ button:active {
   border-top: 1px solid #ccc;
   flex-wrap: wrap;
   padding: 10px;
-}
-
-.repo-page-forks, .repo-page-stars {
-  font-weight: bold;
 }
 
 .not-found {
