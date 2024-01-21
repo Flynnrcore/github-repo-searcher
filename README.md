@@ -4,7 +4,7 @@
 
 ## Демонстрация приложения
 [Ссылка на Github Repository Searcher](https://github-repo-searcher.vercel.app)
-
+![Github Repository Searcher img](https://i.postimg.cc/HLc2xRp5/2024-01-21-18-38-47.png)
 ## Установка 
 - Команда для локального сохранения репозитория  
   ```
