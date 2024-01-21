@@ -6,7 +6,7 @@ export default class CopyButton extends React.Component {
     super(props);
     this.state = {
       isCopied: false,
-    }
+    };
   }
 
   hadleCopy = () => {
@@ -29,6 +29,6 @@ export default class CopyButton extends React.Component {
       >
         {isCopied? 'Cкопировано!' : 'Скопировать'}
       </button>
-    )
+    );
   }
 }

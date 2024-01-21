@@ -101,7 +101,6 @@ class SearchPageComponents extends React.Component {
           )}
         </section>
       </main>
-
     );
   }
 }
