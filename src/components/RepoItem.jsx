@@ -25,39 +25,30 @@ class Repo extends React.Component {
   }
 
   render() {
-    const { 
-      id, 
-      name, 
-      html_url, 
-      url, 
-      description, 
-      forks_count,
-      stargazers_count, 
-      owner: { avatar_url },
-      favorite,
-    } = this.props;
+    const { getRepoById } = this.context;
+    const repo = getRepoById(this.props.id, this.props.isFavorite);
 
     return (
-      <article key={id}>
-        <a href={html_url} className="repo-name">{name}</a>
-        <img src={avatar_url} className="repo-avatar" alt="avatar" />
+      <article key={repo.id}>
+        <a href={repo.html_url} className="repo-name">{repo.name}</a>
+        <img src={repo.owner.avatar_url} className="repo-avatar" alt="avatar" />
         <div className="repo-container">
-          <p className="repo-description">Описание:<br/>{description}</p>
-          <p className="repo-forks">Forks: {forks_count}</p>
-          <p className="repo-stars">Stars: {stargazers_count}</p>
+          <p className="repo-description">Описание:<br/>{repo.description}</p>
+          <p className="repo-forks">Forks: {repo.forks_count}</p>
+          <p className="repo-stars">Stars: {repo.stargazers_count}</p>
         </div>
-        { favorite ? (
-          <button onClick={() => this.handleDelFavorite(this.props.id)} className="repo-btn">
+        {this.props.isFavorite ? (
+          <button onClick={() => this.handleDelFavorite(repo.id)} className="repo-btn">
             Удалить из избранного
           </button> 
         ) : (
-          <button onClick={() => this.handleAddFavorite(this.props)} className="repo-btn">
+          <button onClick={() => this.handleAddFavorite(repo)} className="repo-btn">
             Добавить в избранное
           </button> 
         )}
         <button 
           className="repo-btn"
-          onClick={() => this.handleClick(url)}
+          onClick={() => this.handleClick(repo.url)}
         >
           <Link to="/repo">
             Подробнее

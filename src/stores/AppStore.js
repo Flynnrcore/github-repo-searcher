@@ -25,6 +25,11 @@ class AppStore {
   setRepoPage = (url) => {
     this.repoPage = url;
   }
+
+  getRepoById = (id, isFavorite) => {
+    const data = isFavorite ? this.favoriteRepos : this.repos;
+    return data.find((repo) => repo.id === id);
+  }
 }
 
 export const appStore = new AppStore();

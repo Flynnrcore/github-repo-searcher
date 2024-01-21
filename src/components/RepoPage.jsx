@@ -52,21 +52,20 @@ export default class RepoPage extends React.Component {
             </a>
           </div>
           <ul className="repo-information-list">
-            <li>Автор: {repoData.owner.login}</li>
-            <li>Создан: {repoData.created_at}<br/>Последнее обновление: {repoData.updated_at}</li>
-            <li>Язык программирования: {repoData.language ? repoData.language : 'Не указан' }</li>
+            <li><b>Автор:</b> {repoData.owner.login}</li>
+            <li><b>Создан:</b> {repoData.created_at}<br/>Последнее обновление: {repoData.updated_at}</li>
+            <li><b>Язык программирования:</b> {repoData.language ? repoData.language : 'Не указан' }</li>
             <li>
-              Описание:<br/>{repoData.description}
+              <b>Описание:</b><br/>{repoData.description}
             </li>
-            <li className="repo-page-forks">Forks: {repoData.forks_count}</li>
-            <li className="repo-page-stars">Stars: {repoData.stargazers_count}</li>
-            <li>Open issues: {repoData.open_issues_count}</li>
-            <li>Подписки на уведомления: {repoData.subscribers_count}</li>
+            <li className="repo-page-forks"><b>Forks:</b> {repoData.forks_count}</li>
+            <li className="repo-page-stars"><b>Stars:</b> {repoData.stargazers_count}</li>
+            <li><b>Open issues:</b> {repoData.open_issues_count}</li>
+            <li><b>Подписки на уведомления:</b> {repoData.subscribers_count}</li>
           </ul>
           <button className="repo-btn"><Link to="/">Назад</Link></button>
         </div>
       </main>
     );
-
   }
 }

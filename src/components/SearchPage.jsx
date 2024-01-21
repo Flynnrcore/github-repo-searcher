@@ -76,8 +76,8 @@ class SearchPageComponents extends React.Component {
           {this.context.repos.map((repo) => (
             <RepoItem
               key={repo.id}
-              favorite={false}
-              {...repo}
+              id={repo.id}
+              isFavorite={false}
             />)
           )}
         </section>
@@ -91,12 +91,14 @@ class SearchPageComponents extends React.Component {
               &#711;
             </button>
           </div>
-          {!this.state.hidden && (this.context.favoriteRepos.map((repo) => {
-            const newProps = { ...repo, favorite: true };
-            return (
-              <RepoItem key={repo.id} {...newProps}/>
-            );
-          }))}
+          {!this.state.hidden && (this.context.favoriteRepos.map((repo) => (
+            <RepoItem
+              key={repo.id}
+              id={repo.id}
+              isFavorite={true}
+            />)
+            )
+          )}
         </section>
       </main>
 
