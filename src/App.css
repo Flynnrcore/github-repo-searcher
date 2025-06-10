@@ -1,6 +1,9 @@
 .App {
   text-align: center;
   color: #333;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 header {
@@ -26,10 +29,13 @@ header img {
 main {
   display: flex;
   max-width: 1100px;
+  width: 100vw;
+  gap: 16px;
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .main-form {
@@ -37,17 +43,36 @@ main {
   flex-basis: 100%;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 form {
-  max-height: 50px;
-  margin-top: 10px;
+  position: relative;
+  height: 50px;
+  margin-top: 16px;
+  width: 100%;
 }
 
 form input {
-  min-height: 20px;
+  height: 50px;
   min-width: 230px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #EBE8F2;
+  border: none;
+  color: purple;
+  padding-left: 20px;
 }
+
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  background: none;
+  border: none;
+}
+
 
 .form-btn {
   height: 28px;
@@ -71,11 +96,13 @@ form input {
 .section-left,
 .section-right {
   display: flex;
+  flex-basis: 49%;
   flex-grow: 1;
-  flex-basis: 50%;
   flex-direction: column;
   text-align: center;
   align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .favorite-header {
@@ -96,67 +123,97 @@ form input {
 
 article {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  min-height: 250px;
-  max-height: 250px;
-  min-width: 300px;
-  max-width: 500px;
-  margin: 5px 5px;
-  border: 1px solid #ccc;
-  border-radius: 1%;
-}
-
-.repo-name {
-  flex-basis: 100%;
-  justify-content: center;
-  margin: 5px 0 0 0;
+  flex-direction: row;
+  min-height: 200px;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px #00000010;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 .repo-avatar {
-  flex-basis: 30%;
-  max-width: 100px;
-  max-height: 100px;
-  border-radius: 10%;
-  margin: 0 10px;
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
 }
 
 .repo-container {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.repo-details {
+  display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
-  flex-basis: 65%;
-  margin: 0 10px 0 0;
+  width: 100%;
+  gap: 16px;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  color: #664F94;
+}
+
+.repo-name {
+  justify-content: center;
+  height: max-content;
+  font-weight: bold;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .repo-description {
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  flex-wrap: nowrap;
-  flex-basis: 100%;
-  max-height: 120px;
-  overflow: hidden;
-  font-size: 14px;
-  margin: 0;
+  display: block;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .repo-forks,
 .repo-stars {
-  flex-basis: 50%;
-  margin: 5px 0 0 0;
+  flex-basis: 45%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.btns-group {
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+  gap: 12px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .repo-btn {
-  height: 35px;
+  max-height: 41px;
   width: 125px;
   color: #0366d6;
-  background: #f6f8fa;
+  background: #EBE8F2;
   border: none;
-  border-radius: 5%;
-  margin: 5px 10px;
-  padding: auto;
+  border-radius: 12px;
+  padding: 5px 16px;
+  box-sizing: border-box;
+}
+
+.addfavourite-btn {
+  background-color: #6B36E3;
+  color: #FAF7FA;
 }
 
 button:hover {
@@ -188,6 +245,8 @@ button:active {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  box-sizing: border-box;
+  max-width: 100vw;
 }
 
 .repo-page-wrapper {
@@ -195,6 +254,8 @@ button:active {
   min-width: 60vw;
   border: 1px solid #ccc;
   border-radius: 1%;
+  box-sizing: border-box;
+  max-width: 100vw;
 }
 
 .repo-page-header {
@@ -205,6 +266,9 @@ button:active {
   background: #f6f8fa;
   padding: 5px;
   border-radius: 1%;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 .repo-page-avatar {
@@ -212,10 +276,16 @@ button:active {
   max-height: 90px;
   border-radius: 50%;
   margin: 0 15px;
+  box-sizing: border-box;
 }
 
 .repo-page-name {
   text-decoration: none;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .repo-page-name:hover {
@@ -226,12 +296,19 @@ button:active {
   font-size: 24px;
   color: #0366d6;
   margin: 10px 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .repo-information-list {
   list-style-type: none;
   padding: 0;
   margin-top: 0px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .repo-information-list li {
@@ -239,6 +316,8 @@ button:active {
   border-top: 1px solid #ccc;
   flex-wrap: wrap;
   padding: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .not-found {
@@ -248,8 +327,9 @@ button:active {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
   padding: 20px;
+  box-sizing: border-box;
+  max-width: 100vw;
 }
 
 @media (max-width: 800px) {
@@ -263,6 +343,19 @@ button:active {
 }
 
 @media (max-width: 625px) {
+  .repo-avatar {
+    width: 100px;
+  }
+
+  .repo-btn {
+    padding: 0;
+    width: 100px;
+  }
+
+  .repo-description {
+    font-size: 12px;
+  }
+
   .hide-btn {
     display: block;
   }

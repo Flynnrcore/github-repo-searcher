@@ -62,17 +62,29 @@ class SearchPageComponents extends React.Component {
         <div className="main-form">
           <form onSubmit={this.handleSubmit}>
             <input
+              name="search"
               onChange={this.handleChange}
               value={this.state.text}
               disabled={this.state.isLoading}
               placeholder=" введите наименование репозитория..."
             />
+            <button
+            type="submit"
+            className="search-btn"
+            disabled={this.state.isLoading}
+            aria-label="Поиск"
+            >
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <circle cx="9" cy="9" r="7" stroke="#664F94" strokeWidth="2"/>
+                <line x1="14" y1="14" x2="19" y2="19" stroke="#664F94" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
           </form>
-          <CopyButton text={this.state.text} />
+          {/* <CopyButton text={this.state.text} />*/}
         </div>
         {this.state.errors ? (<div className="warning"> К сожалению произошла ошибка: {this.state.errors}</div>) : null}
         <section className="section-left">
-          <h1>Список репозиториев:</h1>
+          <h1>Список репозиториев</h1>
           {this.context.repos.map((repo) => (
             <RepoItem
               key={repo.id}
@@ -83,7 +95,7 @@ class SearchPageComponents extends React.Component {
         </section>
         <section className="section-right">
           <div className="favorite-header">
-            <h1>Избранные репозитории:</h1>
+            <h1>Избранные репозитории</h1>
             <button
               className="hide-btn"
               onClick={this.toggleList}
