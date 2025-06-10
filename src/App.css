@@ -103,6 +103,7 @@ form input {
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
+  gap: 16px;
 }
 
 .favorite-header {
@@ -124,6 +125,7 @@ form input {
 article {
   display: flex;
   flex-direction: row;
+  align-items: center;
   min-height: 200px;
   padding: 16px;
   border-radius: 12px;
@@ -131,6 +133,7 @@ article {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
+  gap: 8px;
 }
 
 .repo-avatar {
